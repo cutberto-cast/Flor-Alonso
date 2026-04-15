@@ -47,9 +47,8 @@ function RotatingCell({
           key={src}
           src={src}
           alt=""
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ease-in-out ${
-            i === activeIdx ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1200ms] ease-in-out ${i === activeIdx ? "opacity-100" : "opacity-0"
+            }`}
         />
       ))}
     </div>
@@ -134,14 +133,14 @@ export default function Hero() {
           </span>
         </h1>
 
-        <p className="hero-desc text-lg text-white/80 mb-10 max-w-xl font-light leading-relaxed opacity-0 drop-shadow-sm">
+        {/* <p className="hero-desc text-lg text-white/80 mb-10 max-w-xl font-light leading-relaxed opacity-0 drop-shadow-sm">
           Elevamos cada momento especial con arreglos confeccionados meticulosamente por floristas expertos en nuestra boutique premium.
-        </p>
+        </p> */}
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="#catalog"
-            className="hero-btn opacity-0 flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-[0_8px_30px_rgba(238,43,91,0.45)] hover:-translate-y-0.5"
+            className="hero-btn mt-10 opacity-0 flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-[0_8px_30px_rgba(238,43,91,0.45)] hover:-translate-y-0.5"
           >
             Catálogo
             <span className="material-icons-outlined text-sm">arrow_forward</span>
