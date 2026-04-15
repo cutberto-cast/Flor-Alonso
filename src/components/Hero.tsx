@@ -1,16 +1,20 @@
 "use client";
 
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 
 /* ─── Image paths ─────────────────────────────────────────────────── */
 const ALL_IMAGES = Array.from({ length: 13 }, (_, i) => `/hero-img/grid${i + 1}.jpg`);
 
-/*  8 slots in the grid.
-    C and D are static. A, B, E, F, G, H rotate with smooth crossfade. */
-const STATIC_IMAGES = ALL_IMAGES.slice(0, 2);               // grid1–2  (for C and D)
-const ROTATING_POOL = ALL_IMAGES.slice(2);                   // grid3–13  (11 images for 6 slots)
+/* 5 rotating slots — all 13 images distributed across them */
+const SLOTS: string[][] = [
+  [ALL_IMAGES[0], ALL_IMAGES[5], ALL_IMAGES[10]],  // a: grid1, grid6, grid11
+  [ALL_IMAGES[1], ALL_IMAGES[6], ALL_IMAGES[11]],  // b: grid2, grid7, grid12
+  [ALL_IMAGES[2], ALL_IMAGES[7], ALL_IMAGES[12]],  // c: grid3, grid8, grid13
+  [ALL_IMAGES[3], ALL_IMAGES[8]],                  // d: grid4, grid9
+  [ALL_IMAGES[4], ALL_IMAGES[9]],                  // e: grid5, grid10
+];
 
 const ROTATE_INTERVAL = 4000; // ms between rotations
 
@@ -56,14 +60,6 @@ function RotatingCell({
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  /* Split the rotating pool across 6 slots so they show different images */
-  const slotA = useCallback(() => [ROTATING_POOL[0], ROTATING_POOL[6]],  []);  // grid3, grid9
-  const slotB = useCallback(() => [ROTATING_POOL[1], ROTATING_POOL[7]],  []);  // grid4, grid10
-  const slotE = useCallback(() => [ROTATING_POOL[2], ROTATING_POOL[8]],  []);  // grid5, grid11
-  const slotF = useCallback(() => [ROTATING_POOL[3], ROTATING_POOL[9]],  []);  // grid6, grid12
-  const slotG = useCallback(() => [ROTATING_POOL[4], ROTATING_POOL[10]], []);  // grid7, grid13
-  const slotH = useCallback(() => [ROTATING_POOL[5], ROTATING_POOL[0]],  []);  // grid8, grid3
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -90,86 +86,36 @@ export default function Hero() {
       {/* ── Background: Bento Grid ───────────────────────────────────── */}
       <div className="absolute inset-0 z-0">
         {/*
-          8-cell bento layout (4 cols × 3 rows):
-            Row 1: [a]   [b]  [b]   [c]
-            Row 2: [d]   [d]  [e]   [c]
-            Row 3: [f]   [g]  [g]   [h]
+          5-cell bento layout (4 cols × 2 rows) — all rotating:
+            Row 1: [a]  [b  b]  [c]
+            Row 2: [d  d]  [e]  [c]   ← c spans 2 rows (right column)
         */}
         <div
           className="w-full h-full grid gap-1.5 p-1.5"
           style={{
             gridTemplateColumns: "1fr 1fr 1fr 1fr",
-            gridTemplateRows: "1fr 1fr 1fr",
+            gridTemplateRows: "1fr 1fr",
             gridTemplateAreas: `
               "a b b c"
               "d d e c"
-              "f g g h"
             `,
           }}
         >
-          {/* A — top-left (rotating) */}
-          <RotatingCell
-            images={slotA()}
-            interval={ROTATE_INTERVAL + 600}
-            className="grid-cell rounded-2xl"
-            style={{ gridArea: "a" }}
-            key="slot-a"
-          />
-
-          {/* B — top-center wide (rotating) */}
-          <RotatingCell
-            images={slotB()}
-            interval={ROTATE_INTERVAL}
-            className="grid-cell rounded-2xl"
-            style={{ gridArea: "b" }}
-            key="slot-b"
-          />
-
-          {/* C — right tall (static) */}
-          <div className="grid-cell rounded-2xl overflow-hidden" style={{ gridArea: "c" }}>
-            <img src={STATIC_IMAGES[0]} alt="" className="w-full h-full object-cover" />
-          </div>
-
-          {/* D — middle-left wide (static) */}
-          <div className="grid-cell rounded-2xl overflow-hidden" style={{ gridArea: "d" }}>
-            <img src={STATIC_IMAGES[1]} alt="" className="w-full h-full object-cover" />
-          </div>
-
-          {/* E — center (rotating) */}
-          <RotatingCell
-            images={slotE()}
-            interval={ROTATE_INTERVAL + 1400}
-            className="grid-cell rounded-2xl"
-            style={{ gridArea: "e" }}
-            key="slot-e"
-          />
-
-          {/* F — bottom-left (rotating) */}
-          <RotatingCell
-            images={slotF()}
-            interval={ROTATE_INTERVAL + 2000}
-            className="grid-cell rounded-2xl"
-            style={{ gridArea: "f" }}
-            key="slot-f"
-          />
-
-          {/* G — bottom-center wide (rotating) */}
-          <RotatingCell
-            images={slotG()}
-            interval={ROTATE_INTERVAL + 2800}
-            className="grid-cell rounded-2xl"
-            style={{ gridArea: "g" }}
-            key="slot-g"
-          />
-
-          {/* H — bottom-right (rotating) */}
-          <RotatingCell
-            images={slotH()}
-            interval={ROTATE_INTERVAL + 3400}
-            className="grid-cell rounded-2xl"
-            style={{ gridArea: "h" }}
-            key="slot-h"
-          />
+          {[
+            { area: "a", slot: 0, offset: 0 },
+            { area: "b", slot: 1, offset: 700 },
+            { area: "c", slot: 2, offset: 1400 },
+            { area: "d", slot: 3, offset: 2100 },
+            { area: "e", slot: 4, offset: 2800 },
+          ].map(({ area, slot, offset }) => (
+            <RotatingCell
+              key={area}
+              images={SLOTS[slot]}
+              interval={ROTATE_INTERVAL + offset}
+              className="grid-cell rounded-2xl"
+              style={{ gridArea: area }}
+            />
+          ))}
         </div>
 
         {/* Dark overlay for text legibility */}
