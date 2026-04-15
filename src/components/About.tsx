@@ -36,6 +36,66 @@ export default function About() {
         opacity: 0, y: 28, stagger: 0.13, duration: 0.65, ease: "power3.out",
         scrollTrigger: { trigger: ".about-feature", start: "top 88%" },
       });
+
+      // ── Social icons: animate once on scroll ──────────────────────
+      ScrollTrigger.create({
+        trigger: ".social-login-icons",
+        start: "top 88%",
+        once: true,
+        onEnter: () => {
+          const containers = ref.current?.querySelectorAll(".socialcontainer");
+          containers?.forEach((el, i) => {
+            setTimeout(() => {
+              el.classList.add("is-active");
+              setTimeout(() => el.classList.remove("is-active"), 1600);
+            }, i * 380);
+          });
+        },
+      });
+
+      // ── Experience card: flip once on scroll ──────────────────────
+      ScrollTrigger.create({
+        trigger: ".exp-card-inner",
+        start: "top 88%",
+        once: true,
+        onEnter: () => {
+          const el = ref.current?.querySelector<HTMLElement>(".exp-card-inner");
+          if (!el) return;
+          gsap.to(el, {
+            rotateY: 180, duration: 0.7, ease: "power3.out",
+            onComplete: () => {
+              gsap.to(el, {
+                rotateY: 0, duration: 0.7, ease: "power3.in", delay: 2,
+                onComplete: () => gsap.set(el, { clearProps: "transform" }),
+              });
+            },
+          });
+        },
+      });
+
+      // ── Feature cards: flip each once on scroll ───────────────────
+      ScrollTrigger.create({
+        trigger: ".feature-cards-grid",
+        start: "top 88%",
+        once: true,
+        onEnter: () => {
+          const els = ref.current?.querySelectorAll<HTMLElement>(".feature-card-inner");
+          els?.forEach((el, i) => {
+            setTimeout(() => {
+              gsap.to(el, {
+                rotateY: 180, duration: 0.7, ease: "power3.out",
+                onComplete: () => {
+                  gsap.to(el, {
+                    rotateY: 0, duration: 0.7, ease: "power3.in", delay: 1.8,
+                    onComplete: () => gsap.set(el, { clearProps: "transform" }),
+                  });
+                },
+              });
+            }, i * 420);
+          });
+        },
+      });
+
     }, ref);
     return () => ctx.revert();
   }, []);
@@ -114,7 +174,7 @@ export default function About() {
                   />
                 </div>
                 <div className="group w-full aspect-square perspective-[1000px] bg-transparent font-display cursor-default">
-                  <div className="relative w-full h-full text-center transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                  <div className="exp-card-inner relative w-full h-full text-center transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                     
                     {/* Front */}
                     <div className="absolute w-full h-full glass rounded-3xl flex flex-col items-center justify-center text-center p-6 shadow-[0_8px_30px_rgba(238,43,91,0.08)] [backface-visibility:hidden]">
@@ -153,23 +213,23 @@ export default function About() {
             </p>
 
             {/* Features (Flip Cards) */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-8">
+            <div className="feature-cards-grid grid grid-cols-3 gap-2 md:gap-6 mt-8">
               {features.map((f) => (
                 <div key={f.icon} className="about-feature group w-full aspect-[3/4] perspective-[1000px] bg-transparent font-display cursor-default">
-                  <div className="relative w-full h-full text-center transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                    
+                  <div className="feature-card-inner relative w-full h-full text-center transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+
                     {/* Front */}
-                    <div className="absolute w-full h-full flex flex-col justify-center items-center p-4 bg-white/80 border border-primary/20 rounded-[1.5rem] shadow-[0_8px_14px_0_rgba(0,0,0,0.05)] [backface-visibility:hidden]">
-                      <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
-                        <span className="material-icons-outlined text-3xl">{f.icon}</span>
+                    <div className="absolute w-full h-full flex flex-col justify-center items-center p-2 md:p-4 bg-white/80 border border-primary/20 rounded-2xl md:rounded-[1.5rem] shadow-[0_8px_14px_0_rgba(0,0,0,0.05)] [backface-visibility:hidden]">
+                      <div className="w-8 h-8 md:w-14 md:h-14 rounded-full bg-primary/10 flex items-center justify-center mb-2 md:mb-4 text-primary">
+                        <span className="material-icons-outlined text-base md:text-3xl">{f.icon}</span>
                       </div>
-                      <h4 className="font-extrabold text-gray-800 text-lg leading-tight">{f.title}</h4>
+                      <h4 className="font-extrabold text-gray-800 text-[9px] md:text-lg leading-tight">{f.title}</h4>
                     </div>
-                    
+
                     {/* Back */}
-                    <div className="absolute w-full h-full flex flex-col justify-center items-center p-5 liquid-glass rounded-[1.5rem] [backface-visibility:hidden] [transform:rotateY(180deg)] border border-primary/30 text-center">
-                      <h4 className="font-extrabold text-primary text-base mb-2">{f.title}</h4>
-                      <p className="text-gray-700 text-sm font-medium">{f.desc}</p>
+                    <div className="absolute w-full h-full flex flex-col justify-center items-center p-2 md:p-5 liquid-glass rounded-2xl md:rounded-[1.5rem] [backface-visibility:hidden] [transform:rotateY(180deg)] border border-primary/30 text-center">
+                      <h4 className="font-extrabold text-primary text-[9px] md:text-base mb-1 md:mb-2">{f.title}</h4>
+                      <p className="text-gray-700 text-[8px] md:text-sm font-medium leading-snug">{f.desc}</p>
                     </div>
 
                   </div>

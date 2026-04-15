@@ -30,7 +30,7 @@ export default function OrderModal({ product, onClose }: OrderModalProps) {
   if (!product) return null;
 
   const inputClass =
-    "block w-full bg-rose-50/60 border border-rose-100 rounded-2xl px-4 pb-2.5 pt-5 text-sm text-gray-800 appearance-none focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 peer transition-all placeholder-transparent";
+    "block w-full bg-rose-50/60 border border-rose-100 rounded-2xl px-4 pb-2.5 pt-5 text-base md:text-sm text-gray-800 appearance-none focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 peer transition-all placeholder-transparent";
 
   const labelClass =
     "absolute text-xs text-gray-400 duration-300 transform -translate-y-3.5 scale-75 top-4 z-10 origin-[0] left-4 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3.5 pointer-events-none";
@@ -50,12 +50,18 @@ export default function OrderModal({ product, onClose }: OrderModalProps) {
         className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-4xl z-[70] max-h-[90vh] flex flex-col md:flex-row overflow-hidden bg-white rounded-3xl shadow-[0_32px_80px_rgba(0,0,0,0.18)] border border-rose-100"
       >
         {/* ── Left: image ── */}
-        <div className="w-full md:w-[44%] relative flex-shrink-0 min-h-[220px] md:min-h-0">
+        <div className="w-full md:w-[44%] relative flex-shrink-0 h-[175px] md:h-auto">
           <img src={product.image} alt={product.title} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
 
           <div className="absolute top-5 left-5 w-9 h-9 border-t-2 border-l-2 border-white/30 rounded-tl-xl" />
           <div className="absolute bottom-5 right-5 w-9 h-9 border-b-2 border-r-2 border-white/30 rounded-br-xl" />
+
+          {/* Close button — mobile only, pinned to image top-right */}
+          <button onClick={onClose}
+            className="md:hidden absolute top-3 right-3 z-50 w-8 h-8 bg-black/35 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center text-white hover:bg-black/55 transition-colors cursor-pointer">
+            <span className="material-icons-outlined text-[18px]">close</span>
+          </button>
 
           <div className="absolute bottom-0 left-0 right-0 p-7 text-white z-10">
             {product.badge && (
@@ -78,7 +84,7 @@ export default function OrderModal({ product, onClose }: OrderModalProps) {
         </div>
 
         {/* ── Right: form ── */}
-        <div className="w-full md:w-[56%] p-6 md:p-8 overflow-y-auto flex flex-col relative bg-white">
+        <div className="w-full md:w-[56%] p-6 md:p-8 overflow-y-auto flex flex-col relative bg-white flex-1">
 
           {/* Close desktop */}
           <button onClick={onClose}
@@ -86,16 +92,7 @@ export default function OrderModal({ product, onClose }: OrderModalProps) {
             <span className="material-icons-outlined text-lg group-hover:rotate-90 transition-transform duration-300">close</span>
           </button>
 
-          {/* Close mobile */}
-          <button onClick={onClose}
-            className="md:hidden absolute top-4 right-4 z-50 bg-rose-50 border border-rose-100 rounded-xl p-2 text-gray-400 hover:text-primary transition-colors cursor-pointer">
-            <span className="material-icons-outlined">close</span>
-          </button>
-
-          <div className="mb-6 md:pr-12">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center mb-3">
-              <span className="material-icons-outlined text-primary">local_florist</span>
-            </div>
+          <div className="mb-4 md:mb-6 md:pr-12">
             <h3 className="text-xl font-extrabold text-gray-900 tracking-tight">Completa tu pedido</h3>
             <p className="text-gray-400 text-sm mt-1">Confirmación vía WhatsApp en minutos.</p>
           </div>

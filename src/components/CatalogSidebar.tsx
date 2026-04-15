@@ -71,32 +71,61 @@ export default function CatalogSidebar({
           )}
         </div>
 
-        {/* Ocasión */}
-        <div>
-          <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Ocasión</h4>
-          <div className="space-y-1.5">
-            {OCCASIONS.map((item) => {
-              const checked = selectedOccasions.includes(item);
-              return (
-                <label key={item} className="flex items-center gap-2.5 group cursor-pointer select-none">
-                  <div className="relative flex-shrink-0">
-                    <input
-                      type="checkbox"
-                      checked={checked}
-                      onChange={() => onOccasionToggle(item)}
-                      className="peer appearance-none w-4 h-4 border-2 border-rose-200 rounded-md checked:border-primary checked:bg-primary transition-all cursor-pointer"
-                    />
-                    <span className="material-icons-outlined absolute inset-0 flex items-center justify-center text-white text-[11px] pointer-events-none opacity-0 peer-checked:opacity-100">
-                      check
+        {/* Ocasión + Precio: 2 columnas en mobile, apilados en desktop */}
+        <div className="grid grid-cols-2 gap-x-4 gap-y-4 lg:grid-cols-1">
+
+          {/* Ocasión */}
+          <div>
+            <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Ocasión</h4>
+            <div className="space-y-1.5">
+              {OCCASIONS.map((item) => {
+                const checked = selectedOccasions.includes(item);
+                return (
+                  <label key={item} className="flex items-center gap-2.5 group cursor-pointer select-none">
+                    <div className="relative flex-shrink-0">
+                      <input
+                        type="checkbox"
+                        checked={checked}
+                        onChange={() => onOccasionToggle(item)}
+                        className="peer appearance-none w-4 h-4 border-2 border-rose-200 rounded-md checked:border-primary checked:bg-primary transition-all cursor-pointer"
+                      />
+                      <span className="material-icons-outlined absolute inset-0 flex items-center justify-center text-white text-[11px] pointer-events-none opacity-0 peer-checked:opacity-100">
+                        check
+                      </span>
+                    </div>
+                    <span className={`text-sm transition-colors ${checked ? "text-primary font-semibold" : "text-gray-500 group-hover:text-gray-800"}`}>
+                      {item}
                     </span>
-                  </div>
-                  <span className={`text-sm transition-colors ${checked ? "text-primary font-semibold" : "text-gray-500 group-hover:text-gray-800"}`}>
-                    {item}
-                  </span>
-                </label>
-              );
-            })}
+                  </label>
+                );
+              })}
+            </div>
           </div>
+
+          {/* Precio */}
+          <div>
+            <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Rango de precio</h4>
+            <div className="space-y-1.5">
+              {PRICE_RANGES.map((item) => {
+                const checked = selectedPrice === item;
+                return (
+                  <label key={item} className="flex items-center gap-2.5 group cursor-pointer select-none">
+                    <input
+                      type="radio"
+                      name="price"
+                      checked={checked}
+                      onChange={() => onPriceChange(item)}
+                      className="peer appearance-none w-4 h-4 border-2 border-rose-200 rounded-full checked:border-primary checked:border-[5px] transition-all cursor-pointer bg-white"
+                    />
+                    <span className={`text-sm transition-colors ${checked ? "text-primary font-semibold" : "text-gray-500 group-hover:text-gray-800"}`}>
+                      {item}
+                    </span>
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+
         </div>
 
         <div className="border-t border-rose-50" />
@@ -118,32 +147,6 @@ export default function CatalogSidebar({
                 >
                   {item}
                 </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="border-t border-rose-50" />
-
-        {/* Precio */}
-        <div>
-          <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Rango de precio</h4>
-          <div className="space-y-1.5">
-            {PRICE_RANGES.map((item) => {
-              const checked = selectedPrice === item;
-              return (
-                <label key={item} className="flex items-center gap-2.5 group cursor-pointer select-none">
-                  <input
-                    type="radio"
-                    name="price"
-                    checked={checked}
-                    onChange={() => onPriceChange(item)}
-                    className="peer appearance-none w-4 h-4 border-2 border-rose-200 rounded-full checked:border-primary checked:border-[5px] transition-all cursor-pointer bg-white"
-                  />
-                  <span className={`text-sm transition-colors ${checked ? "text-primary font-semibold" : "text-gray-500 group-hover:text-gray-800"}`}>
-                    {item}
-                  </span>
-                </label>
               );
             })}
           </div>

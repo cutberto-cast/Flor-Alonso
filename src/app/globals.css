@@ -171,3 +171,15 @@
 }
 /* TikTok setup */
 .social-icon-3 { background: #000000; }
+
+/* Scroll-triggered social icon animation (same effect as :hover) */
+.socialcontainer.is-active .social-icon-1,
+.socialcontainer.is-active .social-icon-2,
+.socialcontainer.is-active .social-icon-3 {
+  transform: translateY(-70px);
+}
+.socialcontainer.is-active .social-icon-1 svg,
+.socialcontainer.is-active .social-icon-2 svg,
+.socialcontainer.is-active .social-icon-3 svg {
+  opacity: 1;
+}
