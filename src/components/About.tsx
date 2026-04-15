@@ -58,6 +58,52 @@ export default function About() {
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
+                
+                {/* Social Icons Section */}
+                <div className="about-text pt-2">
+                  <p className="text-xs font-bold text-gray-800 mb-1 uppercase tracking-wider text-center">Síguenos:</p>
+                  <div className="social-login-icons justify-center transform scale-90 origin-top">
+                    {/* Facebook */}
+                    <a href="#" className="socialcontainer">
+                      <div className="icon social-icon-1-1">
+                        <svg viewBox="0 0 320 512" fill="white" height="1.6em" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+                        </svg>
+                      </div>
+                      <div className="social-icon-1">
+                        <svg viewBox="0 0 320 512" fill="white" height="1.6em" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+                        </svg>
+                      </div>
+                    </a>
+                    {/* Instagram */}
+                    <a href="#" className="socialcontainer">
+                      <div className="icon social-icon-2-2">
+                        <svg fill="white" viewBox="0 0 448 512" height="1.5em" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                        </svg>
+                      </div>
+                      <div className="social-icon-2">
+                        <svg fill="white" viewBox="0 0 448 512" height="1.5em" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                        </svg>
+                      </div>
+                    </a>
+                    {/* TikTok */}
+                    <a href="#" className="socialcontainer">
+                      <div className="icon social-icon-3-3">
+                        <svg viewBox="0 0 448 512" fill="white" height="1.6em" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+                        </svg>
+                      </div>
+                      <div className="social-icon-3">
+                        <svg viewBox="0 0 448 512" fill="white" height="1.6em" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+                        </svg>
+                      </div>
+                    </a>
+                  </div>
+                </div>
               </div>
               <div className="space-y-4">
                 <div className="rounded-3xl overflow-hidden aspect-square shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
@@ -67,9 +113,24 @@ export default function About() {
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
-                <div className="glass rounded-3xl aspect-square flex flex-col items-center justify-center text-center p-6 shadow-[0_8px_30px_rgba(238,43,91,0.08)]">
-                  <span className="text-5xl font-black text-gray-900 mb-2 tracking-tighter">15+</span>
-                  <span className="text-gray-400 text-sm font-medium leading-snug">Años de<br />experiencia</span>
+                <div className="group w-full aspect-square perspective-[1000px] bg-transparent font-display cursor-default">
+                  <div className="relative w-full h-full text-center transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                    
+                    {/* Front */}
+                    <div className="absolute w-full h-full glass rounded-3xl flex flex-col items-center justify-center text-center p-6 shadow-[0_8px_30px_rgba(238,43,91,0.08)] [backface-visibility:hidden]">
+                      <span className="text-5xl font-black text-gray-900 mb-2 tracking-tighter">15+</span>
+                      <span className="text-gray-400 text-sm font-medium leading-snug">Años de<br />experiencia</span>
+                    </div>
+
+                    {/* Back */}
+                    <div className="absolute w-full h-full flex flex-col justify-center items-center p-6 liquid-glass rounded-3xl [backface-visibility:hidden] [transform:rotateY(180deg)] border border-primary/30 text-center shadow-[0_8px_30px_rgba(238,43,91,0.08)]">
+                      <span className="material-icons-outlined text-primary text-3xl mb-2">auto_awesome</span>
+                      <p className="text-gray-700 text-sm font-medium leading-snug">
+                        Más de una década perfeccionando el arte floral para tus momentos inolvidables.
+                      </p>
+                    </div>
+
+                  </div>
                 </div>
               </div>
             </div>
@@ -91,15 +152,26 @@ export default function About() {
               En FlorArte, cada pétalo cuenta una historia. Seleccionamos las flores más frescas para transformarlas en obras de arte efímeras que transmiten lo que las palabras no pueden expresar.
             </p>
 
-            <div className="space-y-3 pt-2">
+            {/* Features (Flip Cards) */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-8">
               {features.map((f) => (
-                <div key={f.icon} className="about-feature liquid-glass rounded-2xl p-4 flex items-center gap-4 hover:bg-rose-50/50 transition-all duration-300 cursor-default group">
-                  <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 transition-colors">
-                    <span className="material-icons-outlined text-primary">{f.icon}</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-800 text-sm">{f.title}</h4>
-                    <p className="text-gray-400 text-xs mt-0.5">{f.desc}</p>
+                <div key={f.icon} className="about-feature group w-full aspect-[3/4] perspective-[1000px] bg-transparent font-display cursor-default">
+                  <div className="relative w-full h-full text-center transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                    
+                    {/* Front */}
+                    <div className="absolute w-full h-full flex flex-col justify-center items-center p-4 bg-white/80 border border-primary/20 rounded-[1.5rem] shadow-[0_8px_14px_0_rgba(0,0,0,0.05)] [backface-visibility:hidden]">
+                      <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 text-primary">
+                        <span className="material-icons-outlined text-3xl">{f.icon}</span>
+                      </div>
+                      <h4 className="font-extrabold text-gray-800 text-lg leading-tight">{f.title}</h4>
+                    </div>
+                    
+                    {/* Back */}
+                    <div className="absolute w-full h-full flex flex-col justify-center items-center p-5 liquid-glass rounded-[1.5rem] [backface-visibility:hidden] [transform:rotateY(180deg)] border border-primary/30 text-center">
+                      <h4 className="font-extrabold text-primary text-base mb-2">{f.title}</h4>
+                      <p className="text-gray-700 text-sm font-medium">{f.desc}</p>
+                    </div>
+
                   </div>
                 </div>
               ))}
