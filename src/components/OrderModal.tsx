@@ -50,7 +50,7 @@ export default function OrderModal({ product, onClose }: OrderModalProps) {
         className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-4xl z-[70] max-h-[90vh] flex flex-col md:flex-row overflow-hidden bg-white rounded-3xl shadow-[0_32px_80px_rgba(0,0,0,0.18)] border border-rose-100"
       >
         {/* ── Left: image ── */}
-        <div className="w-full md:w-[44%] relative flex-shrink-0 h-[175px] md:h-auto">
+        <div className="w-full md:w-[44%] relative flex-shrink-0 min-h-[220px] md:min-h-0">
           <img src={product.image} alt={product.title} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
 
