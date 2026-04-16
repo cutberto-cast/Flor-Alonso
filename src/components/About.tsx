@@ -66,7 +66,7 @@ export default function About() {
             onComplete: () => {
               gsap.to(el, {
                 rotateY: 0, duration: 0.7, ease: "power3.in", delay: 2,
-                onComplete: () => gsap.set(el, { clearProps: "transform" }),
+                onComplete: () => { gsap.set(el, { clearProps: "transform" }); },
               });
             },
           });
@@ -87,7 +87,7 @@ export default function About() {
                 onComplete: () => {
                   gsap.to(el, {
                     rotateY: 0, duration: 0.7, ease: "power3.in", delay: 1.8,
-                    onComplete: () => gsap.set(el, { clearProps: "transform" }),
+                    onComplete: () => { gsap.set(el, { clearProps: "transform" }); },
                   });
                 },
               });
