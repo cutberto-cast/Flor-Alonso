@@ -47,7 +47,7 @@ export default function OrderModal({ product, onClose }: OrderModalProps) {
       {/* Modal */}
       <div
         ref={modalRef}
-        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-4xl z-[70] max-h-[90vh] flex flex-col md:flex-row overflow-hidden bg-white rounded-3xl shadow-[0_32px_80px_rgba(0,0,0,0.18)] border border-rose-100"
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-4xl z-[70] max-h-[90vh] flex flex-col md:flex-row overflow-y-auto md:overflow-hidden bg-white rounded-3xl shadow-[0_32px_80px_rgba(0,0,0,0.18)] border border-rose-100"
       >
         {/* ── Left: image ── */}
         <div className="w-full md:w-[44%] relative flex-shrink-0 min-h-[220px] md:min-h-0">
@@ -84,7 +84,7 @@ export default function OrderModal({ product, onClose }: OrderModalProps) {
         </div>
 
         {/* ── Right: form ── */}
-        <div className="w-full md:w-[56%] p-6 md:p-8 overflow-y-auto flex flex-col relative bg-white flex-1">
+        <div className="w-full md:w-[56%] p-6 md:p-8 md:overflow-y-auto flex flex-col relative bg-white md:flex-1">
 
           {/* Close desktop */}
           <button onClick={onClose}
